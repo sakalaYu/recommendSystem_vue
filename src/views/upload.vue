@@ -83,7 +83,7 @@ export default {
                 file_name: '',//标题
                 type: '',//类型
                 title: '',//内容
-                file_image: '',
+                file_image: '',//封面
                 file_path: '',
                 upload: "",
             },
