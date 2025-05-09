@@ -4,8 +4,8 @@
 		<div class="container">
 			<div class="return" @click="goBack"><img src="../assets/img/head/return.png"></div>
 		  <h1 class="nav-logo">
-			<img src="../assets/img/head/logo.png" />
-			<div class="head-name">应用开发AI推荐系统平台</div>
+			<!-- <img src="../assets/img/head/logo.png" /> -->
+			<div class="head-name">软件开发功能模块推荐系统平台</div>
 		  </h1>
 		  <ul class="nav-aside">
 			<li class="nav-user" v-if="loggedIn">
@@ -15,7 +15,7 @@
 				<div class="nav-user-list">
 				  <dl class="nav-user-avatar">
 					<dd><span class="ng-scope"></span></dd>
-					<dt class="ng-binding">{{userInfo.userLKnm}}</dt>
+					<dt class="ng-binding">{{userInfo.username}}</dt>
 				  </dl>
 				  <ul>
 					<li class="order">
@@ -33,12 +33,11 @@
 			<div class="logout" v-if="loggedIn" @click="logout"><img src="../assets/img/login/logout.png"></div>
 			<!-- 登陆注册 -->
 			<div class="nav-lore" v-if="!loggedIn">
-			  <router-link to="/login" class="iconfont nav-login">
-				<div class="head-login">登录</div>
-				<div class="fenge">|</div>
-				<div class="head-register">注册</div>
-<!--          <div class="head-register">退出</div>-->
-			  </router-link>
+			  <div class="iconfont nav-login">
+              <router-link to="/login" class="head-login">登录</router-link>
+              <div class="fenge">|</div>
+              <router-link to="/register" class="head-register">注册</router-link>
+            </div>
 			</div>
 		  </ul>
 		</div>
@@ -159,6 +158,7 @@
 	font-size: 16px;
 	margin-left: 45px;
 	margin-top: -30px;
+	display: block;
   }
   .fenge {
 	width: 40px;

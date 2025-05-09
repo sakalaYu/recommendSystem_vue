@@ -32,18 +32,18 @@ const router = new Router({
       redirect: '/phone'
     },
     {
-      path: '/phone',
+      path: '/phone',//首页
       name: 'Shop',
       component: Shop
     },
     {
-      path: '/upload',
+      path: '/upload',// 文件上传
       name: 'upload',
       component: Upload,
       meta: { requiresRoot: false }
     },
     {
-      path: '/chart',
+      path: '/chart',// 图表
       name: 'chart',
       component: Chart,
       meta: { requiresRoot: false }
@@ -101,17 +101,17 @@ const router = new Router({
       component: () => import('../views/list/listEight'),
     },
     {
-      path: '/item',
+      path: '/item',//商品详情,但啥也没有
       name: 'Item',
       component: Item
     },
     {
-      path: '/cart',
+      path: '/cart',//购物车
       name: 'Cart',
       component: Cart
     },
     {
-      path: '/checkout',
+      path: '/checkout',//收获信息、发票信息核对
       name: 'Checkout',
       component: Checkout
     },
@@ -149,11 +149,12 @@ const router = new Router({
 });
 router.beforeEach((to, from, next) => {
   let token = window.sessionStorage.getItem("token");
+  const redirectPath = window.sessionStorage.getItem("redirectPath"); // 获取重定向路径
   console.log("token:" + token);
   console.log("to.path:" + to.path);
-  const whiteList = ['/login', '/', '/cart', '/checkout', '/item', '/phone', '/register']
+  const whiteList = ['/login', '/', '/phone', '/register']
   if (token) {
-    if (to.path === "/login") {//如果是登录请求
+    if (to.path === "/login"&&!redirectPath) {//如果是登录请求
       next('/');
     } else {
       next(); //放行

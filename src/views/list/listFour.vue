@@ -57,7 +57,7 @@ export default {
           this.goodsShow = response.data.data; // 假设后端响应包含商品数据
           this.filteredGoods = this.goodsShow.filter((item) => item.type === 3);
           for (var i = 0; i < this.filteredGoods.length; i++) {
-            this.filteredGoods[i].type = "Spring Boot项目";
+            this.filteredGoods[i].type = "移动端开发";
           }
           console.log(this.filteredGoods); // 输出筛选后的数组
         })

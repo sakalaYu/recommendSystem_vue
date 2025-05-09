@@ -82,25 +82,25 @@ export default {
                 item.type = "前端开发";
                 break;
               case 1:
-                item.type = "React";
-                break;
-              case 2:
                 item.type = "后端开发";
                 break;
+              case 2:
+                item.type = "数据库";
+                break;
               case 3:
-                item.type = "Spring Boot项目";
+                item.type = "移动端开发";
                 break;
               case 4:
-                item.type = "Java Web";
+                item.type = "云计算与DevOps";
                 break;
               case 5:
-                item.type = "响应式开发";
+                item.type = "安全技术栈";
                 break;
               case 6:
-                item.type = "云服务集成";
+                item.type = "版本控制与协作";
                 break;
               case 7:
-                item.type = "跨平台开发";
+                item.type = "Web开发工具与库";
                 break;
               default:
                 break;
@@ -125,25 +125,25 @@ export default {
                 item.type = "前端开发";
                 break;
               case 1:
-                item.type = "React";
-                break;
-              case 2:
                 item.type = "后端开发";
                 break;
+              case 2:
+                item.type = "数据库";
+                break;
               case 3:
-                item.type = "Spring Boot项目";
+                item.type = "移动端开发";
                 break;
               case 4:
-                item.type = "Java Web";
+                item.type = "云计算与DevOps";
                 break;
               case 5:
-                item.type = "响应式开发";
+                item.type = "安全技术栈";
                 break;
               case 6:
-                item.type = "云服务集成";
+                item.type = "版本控制与协作";
                 break;
               case 7:
-                item.type = "跨平台开发";
+                item.type = "Web开发工具与库";
                 break;
               default:
                 break;
@@ -168,25 +168,25 @@ export default {
                 item.type = "前端开发";
                 break;
               case 1:
-                item.type = "React";
-                break;
-              case 2:
                 item.type = "后端开发";
                 break;
+              case 2:
+                item.type = "数据库";
+                break;
               case 3:
-                item.type = "Spring Boot项目";
+                item.type = "移动端开发";
                 break;
               case 4:
-                item.type = "Java Web";
+                item.type = "云计算与DevOps";
                 break;
               case 5:
-                item.type = "响应式开发";
+                item.type = "安全技术栈";
                 break;
               case 6:
-                item.type = "云服务集成";
+                item.type = "版本控制与协作";
                 break;
               case 7:
-                item.type = "跨平台开发";
+                item.type = "Web开发工具与库";
                 break;
               default:
                 break;

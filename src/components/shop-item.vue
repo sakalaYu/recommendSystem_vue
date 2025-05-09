@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <div>
-      <div class="item-img" @click="check(item.id)"><img :src="item.file_image"
+      <div class="item-img" @click="check(item.id)"><img :src="`http://localhost:8081/file${item.file_image}`"
           style="opacity: 1;">
       </div>
       <h6 style=" white-space: nowrap;
@@ -15,7 +15,7 @@
       </div>
       <div class="pinglun"><img src="../assets/img/user/pl.png"></div>
       <h2>{{ item.type }}</h2>
-      <div class="item-btns clearfix" @click="downloadFile(item.file_path,item.file_name)">
+      <div class="item-btns clearfix" @click="downloadFile(item.file_path, item.file_name,item.id)">
         <span class="upload"><img src="../assets//img//head//upload.png"></span>
       </div>
     </div>
@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       itemIndex: 0,
-      isFavorite: false
+      isFavorite: this.item.isCollected == 0 ? false : true, // 收藏状态
     }
   },
   props: {
@@ -62,9 +62,17 @@ export default {
     toggleFavorite() {
 
     },
-    downloadFile(fileName,file_name) {
+    downloadFile(fileName, file_name,file_id) {
+      axiosUtil.get(`file/download`,{ id: file_id })
+        .then(response => {
+          // 处理下载成功的逻辑
+          console.log('Download successful:', response);
+        })
+        .catch(error => {
+          console.error('Download error:', error);
+        });
       const fileUrl = fileName; // 文件的URL地址
-      const upload = `http://localhost:8081/file/icon/${fileUrl}`
+      const upload = `http://localhost:8081/file/${fileUrl}`
       var request = new XMLHttpRequest();
       request.responseType = "blob";
       // 确保使用正确的URL

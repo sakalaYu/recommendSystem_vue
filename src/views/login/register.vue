@@ -3,15 +3,15 @@
     <div class="top">
       <div class="logo"><img src="../../assets/img/login/top_logo.png" /></div>
       <div class="logo1">
-        <img src="../../assets/img/head/logo.png" alt="" />
+        <!-- <img src="../../assets/img/head/logo.png" alt="" /> -->
       </div>
-      <div class="logo_text">应用开发AI推荐系统平台</div>
+      <div class="logo_text">软件开发功能模块推荐系统平台</div>
     </div>
     <div class="login-container">
       <div class="logo3"><img src="../../assets/img/login/top_logo.png" /></div>
       <form @submit.prevent="handleRegister">
-        <input type="text" id="userid" v-model="userid" placeholder="请输入用户名" required />
-        <input type="text" id="username" v-model="username" placeholder="请输入账号" required />
+        <!-- <input type="text" id="userid" v-model="userid" placeholder="请输入用户名" required /> -->
+        <input type="text" id="username" v-model="username" placeholder="请输入用户名" required />
         <input type="password" id="password" v-model="password" placeholder="请输入密码" required />
         <!-- <p>
           <span>弱</span>
@@ -20,6 +20,17 @@
         </p> -->
         <input type="password" id="res_password" v-model="resPassword" placeholder="再次确认密码" required />
         <p v-if="password !== resPassword" class="ensurepassword">两次密码输入不一致，请重新输入。</p>
+
+        <!-- 感兴趣模块多选 -->
+        <div class="custom-select-wrapper">
+          <el-select v-model="interests" multiple filterable placeholder="请选择感兴趣的模块（可多选）" style="width: 100%;">
+            <el-option v-for="item in interestOptions" :key="item.value" :label="item.label"
+              :value="item.value"></el-option>
+          </el-select>
+        </div>
+
+
+
         <button type="submit">注册</button>
         <div class="zhuce">
           已有账号？<router-link to="/login">立即登录</router-link>
@@ -37,7 +48,18 @@ export default {
       userid: '', // 初始化为一个空字符串或其他默认值
       username: '',
       password: '',
-      resPassword: ''
+      resPassword: '',
+      interests: [], // 存储用户选择的兴趣模块
+      interestOptions: [ // 感兴趣模块的选项
+        { value: '前端开发', label: '前端开发' },
+        { value: '后端开发', label: '后端开发' },
+        { value: '数据库', label: '数据库' },
+        { value: '移动端开发', label: '移动端开发' },
+        { value: '云计算与DevOps', label: '云计算与DevOps' },
+        { value: '安全技术栈', label: '安全技术栈' },
+        { value: '版本控制与协作', label: '版本控制与协作' },
+        { value: 'Web开发工具与库', label: 'Web开发工具与库' }
+      ]
     };
   },
   watch: {
@@ -165,7 +187,37 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
+.custom-select-wrapper {
+  width: 260px;
+  padding: 15px;
+}
+/* ✅ 正确写法 */
+.custom-select-wrapper >>> .el-select {
+  width: 100%;
+  background-color: rgba(97, 97, 97, 0.1);
+  border-radius: 15px;
+}
 
+.custom-select-wrapper >>> .el-input__inner {
+  background-color: transparent;
+  border-radius: 15px;
+  height: 42px;
+  padding: 0 15px;
+  color: #333;
+  font-size: 16px;
+  border: none;
+}
+
+.custom-select-wrapper >>> .el-input__inner::placeholder {
+  color: #999;
+}
+
+
+
+
+.el-select {
+  width: 100%;
+}
 .top {
   display: flex;
   align-items: center;

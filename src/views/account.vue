@@ -47,23 +47,23 @@ export default {
   data() {
     return {
       userId: 1,
-      favorites: []  // 存储用户收藏数据的数组
+      // favorites: []  // 存储用户收藏数据的数组
     };
   },
   mounted() {
     // 在组件加载时调用后端 API 获取用户收藏数据
-    this.fetchFavorites();
+    // this.fetchFavorites();
   },
   methods: {
     fetchFavorites() {
       // 调用后端 API 获取用户收藏数据
-      axiosUtil.get(`/user/showcollect/${this.userId}`)
-        .then(response => {
-          console.log(response.data);
-        })
-        .catch(error => {
-          console.log('Error fetching favorites:', error);
-        });
+      // axiosUtil.get(`/user/showcollect/${this.userId}`)
+      //   .then(response => {
+      //     console.log(response.data);
+      //   })
+      //   .catch(error => {
+      //     console.log('Error fetching favorites:', error);
+      //   });
     }
   }
 };

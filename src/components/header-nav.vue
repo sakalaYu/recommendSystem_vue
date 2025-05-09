@@ -3,8 +3,8 @@
     <div class="nav-global head-top">
       <div class="container">
         <h1 class="nav-logo">
-          <img src="../assets/img/head/logo.png" />
-          <div class="head-name">应用开发AI推荐系统平台</div>
+          <!-- <img src="../assets/img/head/logo.png" /> -->
+          <div class="head-name">软件开发功能模块推荐系统平台</div>
         </h1>
         <ul class="nav-aside">
           <li class="nav-user" v-if="loggedIn">
@@ -15,7 +15,7 @@
                 <dl class="nav-user-avatar">
                   <dd><span class="ng-scope"></span></dd>
                   <dt class="ng-binding">
-                    {{ userInfo.userLKnm }}
+                    {{ userInfo.username }}
                   </dt>
                 </dl>
                 <ul>
@@ -33,12 +33,11 @@
           <div class="logout" v-if="loggedIn" @click="logout"><img src="../assets/img/login/logout.png"></div>
           <!-- 登陆注册 -->
           <div class="nav-lore" v-if="!loggedIn">
-            <router-link to="/login" class="iconfont nav-login">
-              <div class="head-login">登录</div>
+            <div class="iconfont nav-login">
+              <router-link to="/login" class="head-login">登录</router-link>
               <div class="fenge">|</div>
-              <div class="head-register">注册</div>
-              <!--          <div class="head-register">退出</div>-->
-            </router-link>
+              <router-link to="/register" class="head-register">注册</router-link>
+            </div>
           </div>
         </ul>
       </div>
@@ -55,25 +54,25 @@
               <a>前端开发</a>
             </router-link>
             <router-link to="/listTwo" exact tag="li" activeClass="active">
-              <a>React</a>
-            </router-link>
-            <router-link to="/listThree" exact tag="li" activeClass="active">
               <a>后端开发</a>
             </router-link>
+            <router-link to="/listThree" exact tag="li" activeClass="active">
+              <a>数据库</a>
+            </router-link>
             <router-link to="/listFour" exact tag="li" activeClass="active">
-              <a>Spring Boot项目</a>
+              <a>移动端开发</a>
             </router-link>
             <router-link to="/listFive" exact tag="li" activeClass="active">
-              <a>Java Web</a>
+              <a>云计算与DevOps</a>
             </router-link>
             <router-link to="/listSix" exact tag="li" activeClass="active">
-              <a>响应式开发</a>
+              <a>安全技术栈</a>
             </router-link>
             <router-link to="/listSeven" exact tag="li" activeClass="active">
-              <a>云服务集成</a>
+              <a>版本控制与协作</a>
             </router-link>
             <router-link to="/listEight" exact tag="li" activeClass="active">
-              <a>跨平台开发</a>
+              <a>Web开发工具与库</a>
             </router-link>
             <router-link to="/chart" exact tag="li" activeClass="active">
               <a>可视化数据</a>
@@ -212,6 +211,7 @@ body {
   font-size: 16px;
   margin-left: 45px;
   margin-top: -30px;
+  display: block;
 }
 
 .fenge {

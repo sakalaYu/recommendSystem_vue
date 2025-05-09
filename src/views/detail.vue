@@ -6,7 +6,7 @@
 
       <div class="detail_container">
         <div class="left">
-          <img :src="item.file_image" alt="商品图片"
+          <img :src="`http://localhost:8081/file${item.file_image}`" alt="商品图片"
             style="width: 550px; height: auto;">
 
         </div>
@@ -15,13 +15,13 @@
           <p class="class putu_zi">
             <span class="little_zi">类别</span>
             <span v-show="item.type === 0">前端开发</span>
-            <span v-show="item.type === 1">React</span>
-            <span v-show="item.type === 2">后端开发</span>
-            <span v-show="item.type === 3">Spring Boot项目</span>
-            <span v-show="item.type === 4">Java Web</span>
-            <span v-show="item.type === 5">响应式开发</span>
-            <span v-show="item.type === 6">云服务集成</span>
-            <span v-show="item.type === 7">跨平台开发</span>
+            <span v-show="item.type === 1">后端开发</span>
+            <span v-show="item.type === 2">数据库</span>
+            <span v-show="item.type === 3">移动端开发</span>
+            <span v-show="item.type === 4">云计算与DevOps</span>
+            <span v-show="item.type === 5">安全技术栈</span>
+            <span v-show="item.type === 6">版本控制与协作</span>
+            <span v-show="item.type === 7">Web 开发工具与库</span>
 
           </p>
           <div class="description putu_zi" style="display: flex;">
@@ -44,7 +44,7 @@
           <div class="botton_contain">
             <el-button icon="el-icon-download"
               style="background-color:#438E82;color: white;border-radius: 30px;height: 40px;"
-              @click="downloadFile(item.file_path,item.file_name)">点击下载</el-button>
+              @click="downloadFile(item.file_path,item.file_name,item.id)">点击下载</el-button>
 
 
             <!-- <img style="width: 22px;height: 22px;" src="../assets/img/head/upload.png" alt=""> -->
@@ -54,6 +54,17 @@
               <img v-else src="../assets/img/icon/collected.png">
               <span style="line-height: 40px;">{{ isFavorite ? '取消收藏' : '加入收藏' }}</span>
             </div>
+          </div>
+           <!-- 新增评分功能 -->
+           <div class="rating-container">
+            <el-rate
+              v-model="rating"
+              allow-half
+              show-score
+              :max="5"
+              :score-template="'评分：{value}'"
+              @change="handleRateChange"
+            ></el-rate>
           </div>
         </div>
       </div>
@@ -76,14 +87,23 @@ export default {
   data() {
     return {
       item: {},
-      isFavorite: false
+      isFavorite: false, // 收藏状态
+      rating: 0, // 评分值
     };
   },
 
   methods: {
-    downloadFile(fileName,file_name) {
+    downloadFile(fileName,file_name,file_id) {
+      axiosUtil.get(`file/download`,{ id: file_id })
+        .then(response => {
+          // 处理下载成功的逻辑
+          console.log('Download successful:', response);
+        })
+        .catch(error => {
+          console.error('Download error:', error);
+        });
       const fileUrl = fileName; // 文件的URL地址
-      const upload = `http://localhost:8081/file/icon/${fileUrl}`
+      const upload = `http://localhost:8081/file${fileUrl}`
       var request = new XMLHttpRequest();
       request.responseType = "blob";
       // 确保使用正确的URL
@@ -117,7 +137,22 @@ export default {
           console.error('Error adding item to favorites:', error);
         });
     },
+    handleRateChange(value) {
+      // 评分值改变时调用接口
+      axiosUtil.post('user/rate', {
+        file_id: this.item.id,
+        ah_id: this.item.user_id,
+        rating: value
+      })
+        .then(response => {
+          console.log('评分成功:', response.data);
+        })
+        .catch(error => {
+          console.error('评分失败:', error);
+        });
+    }
   },
+  
   created() {
     const fileId = this.$route.query.fileId;
     axiosUtil.get('/file/show_info', { id: fileId }).then(res => {
@@ -137,6 +172,8 @@ export default {
         user_id: backendData.user_id,
         user_name: backendData.user_name
       };
+      this.isFavorite=backendData.isCollected==0 ? false : true; // 收藏状态
+      this.rating=backendData.userRating; // 评分值
       console.log(this.item);
     })
   }
@@ -155,7 +192,10 @@ export default {
   overflow-y: scroll;
   z-index: -2;
 }
-
+.rating-container {
+  margin-top: 20px;
+  font-size: 16px;
+}
 .bcg {
   position: fixed;
   z-index: -1;

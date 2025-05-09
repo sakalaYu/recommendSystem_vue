@@ -57,7 +57,7 @@ export default {
           this.goodsShow = response.data.data; // 假设后端响应包含商品数据
           this.filteredGoods = this.goodsShow.filter((item) => item.type === 4);
           for (var i = 0; i < this.filteredGoods.length; i++) {
-            this.filteredGoods[i].type = "Java Web";
+            this.filteredGoods[i].type = "云计算与DevOps";
           }
           console.log(this.filteredGoods); // 输出筛选后的数组
         })

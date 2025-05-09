@@ -22,8 +22,7 @@
                 <div class="prod-info clear">
                   <div class="items-thumb">
                     <a href="javascript:;" target="_blank">
-                      <!-- <img :src=" item.file_image" /> -->
-                       <img :src="item.file_image" />
+                       <img :src="`http://localhost:8081/file${item.file_image}`" />
                     </a>
                   </div>
                   <div class="items-params clear">
@@ -111,25 +110,25 @@ export default {
                 modifiedType = "前端开发";
                 break;
               case 1:
-                modifiedType = "React";
-                break;
-              case 2:
                 modifiedType = "后端开发";
                 break;
+              case 2:
+                modifiedType = "数据库";
+                break;
               case 3:
-                modifiedType = "Spring Boot项目";
+                modifiedType = "移动端开发";
                 break;
               case 4:
-                modifiedType = "Java Web";
+                modifiedType = "云计算与DevOps";
                 break;
               case 5:
-                modifiedType = "响应式开发";
+                modifiedType = "安全技术栈";
                 break;
               case 6:
-                modifiedType = "云服务集成";
+                modifiedType = "版本控制与协作";
                 break;
               case 7:
-                modifiedType = "跨平台开发";
+                modifiedType = "Web开发工具与库";
                 break;
               default:
                 modifiedType = "";

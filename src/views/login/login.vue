@@ -2,8 +2,10 @@
   <div class="container">
     <div class="top">
       <div class="logo"><img src="../../assets/img/login/top_logo.png"></div>
-      <div class="logo1"><img src="../../assets/img/head/logo.png" alt=""></div>
-      <div class="logo_text">应用开发AI推荐系统平台</div>
+      <div class="logo1">
+        <!-- <img src="../../assets/img/head/logo.png" alt=""> -->
+      </div>
+      <div class="logo_text">软件开发功能模块推荐系统平台</div>
     </div>
     <div class="login-container">
       <div class="logo3"><img src="../../assets/img/login/top_logo.png"></div>
@@ -43,11 +45,20 @@ export default {
             console.log(response.data.data);
             sessionStorage.setItem("token", response.data.data.token);
             sessionStorage.setItem("userInfo", JSON.stringify(response.data.data.userInfo))
-            this.$router.push('/phone');
-            this.$message({
-              message: "登录成功",
-              type: 'success'
-            });
+            // 登录成功后的逻辑
+            const redirectPath = window.sessionStorage.getItem('redirectPath');
+            if (redirectPath) {
+              window.sessionStorage.removeItem('redirectPath'); // 清除保存的路径
+              window.location.href = redirectPath; // 跳转回原页面
+              // this.$router.push(redirectPath);// 跳转到原页面
+            } else {
+              this.$router.push('/phone');// 默认跳转到首页
+              this.$message({
+                message: "登录成功",
+                type: 'success'
+              });
+            }
+          
 
           }else{
             this.$message.error(response.data.errorMsg);

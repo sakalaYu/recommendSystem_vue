@@ -5,7 +5,7 @@
             <img src="../assets/img/上传背景图.png" alt="">
             <div v-loading="loading" element-loading-text="文件上传中" class="form">
                 <p style="color: black;font-size: 24px;margin-top: -30px;margin-bottom: 20px;">上传文件</p>
-                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm"
+                <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" enctype="multipart/form-data"  class="demo-ruleForm"
                     :hide-required-asterisk="true">
                     <el-form-item label="名称" prop="file_name">
                         <el-input v-model="ruleForm.file_name"></el-input>
@@ -13,13 +13,13 @@
                     <el-form-item label="类别" prop="type">
                         <el-select v-model="ruleForm.type" placeholder="请选择类别">
                             <el-option label="前端开发" value="0"></el-option>
-                            <el-option label="React" value="1"></el-option>
-                            <el-option label="后端开发" value="2"></el-option>
-                            <el-option label="Spring Boot项目" value="3"></el-option>
-                            <el-option label="Java Web" value="4"></el-option>
-                            <el-option label="响应式开发" value="5"></el-option>
-                            <el-option label="云服务集成" value="6"></el-option>
-                            <el-option label="跨平台开发" value="7"></el-option>
+                            <el-option label="后端开发" value="1"></el-option>
+                            <el-option label="数据库" value="2"></el-option>
+                            <el-option label="移动端开发" value="3"></el-option>
+                            <el-option label="云计算与DevOps" value="4"></el-option>
+                            <el-option label="安全技术栈" value="5"></el-option>
+                            <el-option label="版本控制与协作" value="6"></el-option>
+                            <el-option label="Web开发工具与库" value="7"></el-option>
                         </el-select>
                     </el-form-item>
 
