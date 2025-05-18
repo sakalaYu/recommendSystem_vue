@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import '@/assets/css/reset.css'
 import '@/assets/css/header.css'
+import Profile from '@/views/account/profile.vue';
 
 Vue.use(Router)
 
@@ -141,6 +142,12 @@ const router = new Router({
           path: '/address',
           name: 'Address',
           component: Address,
+          meta: { requiresRoot: false }
+        },
+        {
+          path: '/profile',
+          name: 'Profile',
+          component: Profile,
           meta: { requiresRoot: false }
         }
       ]

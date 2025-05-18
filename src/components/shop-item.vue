@@ -7,7 +7,7 @@
       <h6 style=" white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;">{{ item.file_name }}</h6>
-      <h3><img src="../assets/img/user/tx.png" alt="">{{ item.user_name }}</h3>
+      <h3><img :src="`http://localhost:8081/file${item.user_image}`" alt="">{{ item.user_name }}</h3>
       <div class="shoucang" @click="addCarPanelHandle(item.id, item.user_id)">
         <img v-if="!isFavorite" src="../assets/img/icon/collect.png">
         <img v-else src="../assets/img/icon/collected.png">

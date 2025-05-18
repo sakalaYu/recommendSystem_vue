@@ -51,7 +51,7 @@ export default {
   methods: {
     reseat() {
       axiosUtil
-        .get("file/show")
+        .get("file/show/0")
         .then((response) => {
           console.log(response.data.data);
           console.log(this.goodlist2);

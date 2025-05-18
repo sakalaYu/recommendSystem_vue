@@ -37,6 +37,8 @@
                   <div class="username">{{ item.user_name }}</div>
                   <div class="num">{{ item.type }}</div>
                   <el-button class="button_check" icon="el-icon-search" circle @click="check(item.id)"></el-button>
+                  <el-button icon="el-icon-edit" class="button_edit" circle
+                  @click="handleDelete(item.id)"></el-button>
                   <el-button icon="el-icon-delete" class="button_delete" circle
                     @click="handleDelete(item.id)"></el-button>
                 </div>
@@ -191,13 +193,17 @@ export default {
 .button_check {
   margin-top: 15px;
   position: absolute;
-  margin-left: 750px;
+  margin-left: 680px;
 }
-
+.button_edit {
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 730px;
+}
 .button_delete {
   position: absolute;
   margin-top: 15px;
-  margin-left: 700px;
+  margin-left: 780px;
 }
 
 .account-order .gray-box {

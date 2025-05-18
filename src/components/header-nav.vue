@@ -25,6 +25,9 @@
                   <li class="address">
                     <router-link to="/address">我的上传</router-link>
                   </li>
+                  <li class="profile">
+                    <router-link to="/profile">个人中心</router-link>
+                  </li>
                 </ul>
               </div>
             </div>

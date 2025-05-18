@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     reseat() {
-      axiosUtil.get("file/show")
+      axiosUtil.get("file/show/2")
         .then(response => {
           console.log(response.data.data);
           console.log(this.goodlist2)

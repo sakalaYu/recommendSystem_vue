@@ -3,8 +3,8 @@
         <headerUpload />
         <div class="up_container">
             <img src="../assets/img/上传背景图.png" alt="">
-            <div v-loading="loading" element-loading-text="文件上传中" class="form">
-                <p style="color: black;font-size: 24px;margin-top: -30px;margin-bottom: 20px;">上传文件</p>
+            <div v-loading="loading" element-loading-text="模块上传中" class="form">
+                <p style="color: black;font-size: 24px;margin-top: -30px;margin-bottom: 20px;">上传模块</p>
                 <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" enctype="multipart/form-data"  class="demo-ruleForm"
                     :hide-required-asterisk="true">
                     <el-form-item label="名称" prop="file_name">

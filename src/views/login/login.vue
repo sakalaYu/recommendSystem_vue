@@ -10,7 +10,7 @@
     <div class="login-container">
       <div class="logo3"><img src="../../assets/img/login/top_logo.png"></div>
       <form @submit.prevent="handleLogin">
-        <input type="text" id="username" v-model="username" placeholder="账号/学号" required>
+        <input type="text" id="username" v-model="username" placeholder="用户名" required>
         <input type="password" id="password" v-model="password" placeholder="密码" required>
         <button type="submit">登录</button>
         <router-link to="/register" class="zhuce">点击注册 ></router-link>
@@ -41,7 +41,7 @@ export default {
         password: this.password
       })
         .then(response => {
-          if(response.data.success){
+          if (response.data.success) {
             console.log(response.data.data);
             sessionStorage.setItem("token", response.data.data.token);
             sessionStorage.setItem("userInfo", JSON.stringify(response.data.data.userInfo))
@@ -58,9 +58,9 @@ export default {
                 type: 'success'
               });
             }
-          
 
-          }else{
+
+          } else {
             this.$message.error(response.data.errorMsg);
           }
         })
@@ -80,11 +80,15 @@ export default {
   align-items: center;
   height: 100vh;
   width: 100%;
-  background-image: url('../../assets/img/login/bg_login.png'); /* 背景图片的路径 */
-  background-size: cover; /* 背景图片铺满整个容器 */
-  background-position: center; /* 背景图片居中显示 */
+  background-image: url('../../assets/img/login/bg_login.png');
+  /* 背景图片的路径 */
+  background-size: cover;
+  /* 背景图片铺满整个容器 */
+  background-position: center;
+  /* 背景图片居中显示 */
   background-repeat: no-repeat;
 }
+
 .login-container {
   position: relative;
   max-width: 350px;
@@ -124,15 +128,19 @@ input {
   padding: 15px;
   margin-top: 20px;
   margin-bottom: 10px;
-  border-radius: 15px; /* 设置边框圆角 */
+  border-radius: 15px;
+  /* 设置边框圆角 */
   background-color: rgba(97, 97, 97, 0.1);
   padding: 10px;
-  color: #333; /* 设置文字颜色 */
-  font-size: 16px; /* 设置字体大小 */
+  color: #333;
+  /* 设置文字颜色 */
+  font-size: 16px;
+  /* 设置字体大小 */
 }
 
 input::placeholder {
-  color: #999; /* 设置文字颜色 */
+  color: #999;
+  /* 设置文字颜色 */
 }
 
 button {
@@ -145,23 +153,28 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
+
 .top {
   display: flex;
   align-items: center;
   background-color: inherit;
   height: 45px;
-  padding: 0 30px; /* 增加左右内边距 */
+  padding: 0 30px;
+  /* 增加左右内边距 */
 }
+
 .logo img {
   line-height: 45px;
   width: 42px;
   height: 42px;
 }
+
 .logo1 img {
   width: 40px;
   height: 10px;
   margin-left: 10px;
 }
+
 .logo_text {
   line-height: 45px;
   padding-top: 5px;
@@ -170,6 +183,7 @@ button {
   font-weight: bold;
   color: rgb(1, 1, 1);
 }
+
 .zhuce {
   margin-top: 10px;
   font-size: 12px;

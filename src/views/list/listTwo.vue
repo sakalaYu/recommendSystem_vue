@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     reseat() {
-      axiosUtil.get("file/show")
+      axiosUtil.get("file/show/1")
         .then(response => {
           console.log(response.data.data);
           this.goodsShow = response.data.data; // 假设后端响应包含商品数据
